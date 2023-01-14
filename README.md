@@ -4,13 +4,13 @@
 [x] - timer
 [x] - stop shuffling when switch mode
 [x] - count moves
+[x] - adjust count shuffles
+[x] - add icon to size button
 [] - win message
 [] - save(localStorage)
 [] - results(localStorage)
 [] - sound
-[x] - adjust count shuffles
 [] - adaptive
-[] - add icon to size button
 
 ---
 

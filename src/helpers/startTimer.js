@@ -25,3 +25,9 @@ export function stopTimer() {
   clearInterval(TIMER);
   changeWinTime(time);
 }
+
+export function clearTimer() {
+  clearInterval(TIMER);
+  const timerCountdown = document.querySelector(".timerCountdown");
+  timerCountdown.innerHTML = `time: 00:00`;
+}

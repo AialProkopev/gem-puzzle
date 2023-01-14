@@ -5,11 +5,11 @@ import getMatrix from "../helpers/getMatrix";
 import setPositionMatrix from "../helpers/setPositionMatrix";
 import isWon from "../helpers/isWon";
 import randomSwap from "../helpers/randomSwap";
-import { changeStart, renderCountMoves } from "./header";
+import { changeStart } from "./header";
 import { startTimer, stopTimer } from "../helpers/startTimer";
 
 const SHUFFLEINTERVAL = 30;
-const MULTSHUFFLECOUNT = 1;
+const MULTSHUFFLECOUNT = 50;
 
 let nodeItems = [];
 let matrix = null;
@@ -121,7 +121,7 @@ function changeSize(size) {
   SIZE = size;
 }
 
-function changeCountMoves(count) {
+export function changeCountMoves(count) {
   const timer = document.querySelector(".header__countMoves");
   timer.textContent = `moves: ${count}`;
 }
