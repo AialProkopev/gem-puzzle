@@ -74,14 +74,28 @@ function renderModeSwitcher() {
       if (menuItem.classList.length < 2) {
         if (i === 1) {
           main.append(renderBoard3x3());
-          changeCountMoves(0);
-          clearTimer();
+          resetCounters();
         }
-        if (i === 2) main.append(renderBoard4x4());
-        if (i === 3) main.append(renderBoard5x5());
-        if (i === 4) main.append(renderBoard6x6());
-        if (i === 5) main.append(renderBoard7x7());
-        if (i === 6) main.append(renderBoard8x8());
+        if (i === 2) {
+          main.append(renderBoard4x4());
+          resetCounters();
+        }
+        if (i === 3) {
+          main.append(renderBoard5x5());
+          resetCounters();
+        }
+        if (i === 4) {
+          main.append(renderBoard6x6());
+          resetCounters();
+        }
+        if (i === 5) {
+          main.append(renderBoard7x7());
+          resetCounters();
+        }
+        if (i === 6) {
+          main.append(renderBoard8x8());
+          resetCounters();
+        }
       }
 
       items.map((item) => {
@@ -104,21 +118,18 @@ function renderSoundSwitcher() {
   const sound = document.createElement("button");
   sound.classList.add("header__sound");
   sound.textContent = "sound";
-
   return sound;
 }
 function renderResults() {
   const results = document.createElement("button");
   results.classList.add("header__results");
   results.textContent = "results";
-
   return results;
 }
 function renderSaveButton() {
   const save = document.createElement("button");
   save.classList.add("header__save");
   save.textContent = "save";
-
   return save;
 }
 
@@ -130,13 +141,17 @@ function renderTimer() {
   return timer;
 }
 
-export function renderCountMoves(moves) {
+function renderCountMoves(moves) {
   const countMoves = document.createElement("div");
   countMoves.classList.add("header__countMoves");
   countMoves.textContent = `moves: ${moves}`;
   return countMoves;
 }
 
+function resetCounters() {
+  changeCountMoves(0);
+  clearTimer();
+}
 export function changeStart() {
   ISSTART = !ISSTART;
 }

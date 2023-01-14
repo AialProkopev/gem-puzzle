@@ -6,12 +6,8 @@
 [x] - count moves
 [x] - adjust count shuffles
 [x] - add icon to size button
-[] - win message
+[] - win message with counters
 [] - save(localStorage)
 [] - results(localStorage)
 [] - sound
 [] - adaptive
-
----
-
-[] - light/dark theme

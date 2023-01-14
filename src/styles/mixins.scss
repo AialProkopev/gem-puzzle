@@ -1,20 +1,20 @@
 @mixin board($size) {
   position: relative;
-    width: 100%;
-    background-color: $header-background-color;
-    padding-bottom: 100%;
-    margin-top: 100px;
-    border: 1px solid #ffffff;
+  width: 100%;
+  background-color: $header-background-color;
+  padding-bottom: 100%;
+  margin-top: 100px;
+  border: 1px solid #ffffff;
   
-    &__item {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: $size;
-      height: $size;
-      background: #000000;
-      border: 2px solid #ffffff;
-      font-size: 2rem;
-      transition: transform 0.2s;
-    }
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $size;
+    height: $size;
+    background: #000000;
+    border: 2px solid #ffffff;
+    font-size: 2rem;
+    transition: transform 0.2s;
+  }
 }
