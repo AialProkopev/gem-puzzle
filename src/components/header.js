@@ -1,10 +1,10 @@
-import { clearTimer } from "../helpers/startTimer";
 import renderBoard3x3 from "./3x3";
 import renderBoard4x4 from "./4x4";
 import renderBoard5x5 from "./5x5";
 import renderBoard6x6 from "./6x6";
 import renderBoard7x7 from "./7x7";
 import renderBoard8x8 from "./8x8";
+import { clearTimer } from "../helpers/startTimer";
 import { changeCountMoves } from "./board";
 
 let ISSTART = false;

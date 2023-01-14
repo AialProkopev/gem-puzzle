@@ -124,6 +124,59 @@ html {
 // Win popup
 
 .win-popup {
+  margin: 0 auto;
   margin-top: 100px;
-  background-color: green;
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.win-popup::before {
+  content: "";
+  background-image: conic-gradient(
+    $main-font-color 20deg,
+    transparent 120deg
+  );
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.win-popup__container {
+  background: $main-background-color;
+  position: relative;
+  width: 490px;
+  height: 490px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.win-popup__title {
+  margin: 0;
+  font-size: 42px;
+  margin-bottom: 40px;
+}
+.win-popup__counter {
+  margin: 0;
+  font-size: 20px;
+}
+.win-popup__restart {
+  margin-top: 30px;
+  &:hover {
+    color: $hover-color;
+  }
 }

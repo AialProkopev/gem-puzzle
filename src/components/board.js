@@ -73,7 +73,7 @@ function renderBoard(size, className) {
       setTimeout(() => {
         stopTimer();
         // alert(`You won! ${WINTIME}s ${countMoves} moves`);
-        renderWinMessage(WINTIME, countMoves);
+        renderWinMessage(WINTIME, countMoves, size);
       }, 100);
     }
   });
