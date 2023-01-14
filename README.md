@@ -1,13 +1,16 @@
 # gem-puzzle
 
-[] - timer
-[] - stop shuffling when switch mode
-[] - count moves
+[x] - change start button to glass
+[x] - timer
+[x] - stop shuffling when switch mode
+[x] - count moves
 [] - win message
 [] - save(localStorage)
 [] - results(localStorage)
 [] - sound
+[x] - adjust count shuffles
 [] - adaptive
+[] - add icon to size button
 
 ---
 

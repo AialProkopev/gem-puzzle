@@ -4,11 +4,28 @@ import findCoordinatesByNumber from "../helpers/findCoordinatesByNumber";
 import getMatrix from "../helpers/getMatrix";
 import setPositionMatrix from "../helpers/setPositionMatrix";
 import isWon from "../helpers/isWon";
-import { changeMatrix, changeNodeItems, changeSize } from "./header";
+import randomSwap from "../helpers/randomSwap";
+import { changeStart, renderCountMoves } from "./header";
+import { startTimer, stopTimer } from "../helpers/startTimer";
+
+const SHUFFLEINTERVAL = 30;
+const MULTSHUFFLECOUNT = 1;
+
+let nodeItems = [];
+let matrix = null;
+let SIZE = null;
+let timer;
+let WINTIME;
 
 function renderBoard(size, className) {
-  let nodeItems = [];
+  nodeItems = [];
+  matrix = null;
+  let countMoves = 0;
+  clearInterval(timer);
   const array = new Array(size ** 2).fill(0).map((item, index) => index + 1);
+  const boardWrapper = document.createElement("div");
+  boardWrapper.classList.add("board-wrapper");
+
   const board = document.createElement("div");
 
   board.classList.add(className);
@@ -24,16 +41,16 @@ function renderBoard(size, className) {
   }
 
   nodeItems[nodeItems.length - 1].style.display = "none";
-  const matrix = getMatrix(
+  matrix = getMatrix(
     nodeItems.map((item) => Number(item.dataset.matrixId)),
     size
   );
 
   setPositionMatrix(matrix, nodeItems);
 
-  // Change Position
   const blankNumber = size ** 2;
 
+  // Change Position
   board.addEventListener("click", (event) => {
     const buttonNode = event.target.closest("button");
     if (!buttonNode) {
@@ -48,19 +65,69 @@ function renderBoard(size, className) {
     if (isValid) {
       swap(blankCoordinates, buttonCoordinates, matrix);
       setPositionMatrix(matrix, nodeItems);
+      countMoves++;
+      changeCountMoves(countMoves);
     }
     if (isWon(matrix, size)) {
       setTimeout(() => {
-        alert("You won");
+        stopTimer();
+        alert(`You won! ${WINTIME}s ${countMoves} moves`);
       }, 100);
     }
   });
 
-  changeMatrix(matrix);
-  changeNodeItems(nodeItems);
   changeSize(size);
 
-  return board;
+  boardWrapper.append(board);
+  boardWrapper.append(renderGlass());
+  return boardWrapper;
+}
+
+function renderGlass() {
+  const glass = document.createElement("button");
+  glass.classList.add("glass");
+  glass.textContent = "start";
+
+  const maxShuffleCount = MULTSHUFFLECOUNT * SIZE;
+
+  // Start shuffling
+  glass.addEventListener("click", () => {
+    let shuffleCount = 0;
+    clearInterval(timer);
+
+    if (shuffleCount === 0) {
+      timer = setInterval(() => {
+        randomSwap(matrix, SIZE);
+        setPositionMatrix(matrix, nodeItems);
+
+        shuffleCount += 1;
+
+        if (shuffleCount >= maxShuffleCount) {
+          clearInterval(timer);
+          changeStart();
+          startTimer();
+          changeCountMoves(0);
+        }
+      }, SHUFFLEINTERVAL);
+    }
+
+    glass.remove();
+  });
+
+  return glass;
+}
+
+function changeSize(size) {
+  SIZE = size;
+}
+
+function changeCountMoves(count) {
+  const timer = document.querySelector(".header__countMoves");
+  timer.textContent = `moves: ${count}`;
+}
+
+export function changeWinTime(time) {
+  WINTIME = time;
 }
 
 export default renderBoard;

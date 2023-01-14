@@ -4,32 +4,21 @@ import renderBoard5x5 from "./5x5";
 import renderBoard6x6 from "./6x6";
 import renderBoard7x7 from "./7x7";
 import renderBoard8x8 from "./8x8";
-import randomSwap from "../helpers/randomSwap";
-import setPositionMatrix from "../helpers/setPositionMatrix";
 
-let MATRIX;
-let NODEITEMS;
-let SIZE;
+let ISSTART = false;
 
 export function renderHeader() {
   const header = document.createElement("header");
   const title = document.createElement("h1");
-  const timer = document.createElement("div");
-  const countMoves = document.createElement("div");
 
-  // Add classes
   header.classList.add("header");
   title.classList.add("header__title");
-  timer.classList.add("header__timer");
-  countMoves.classList.add("header__countMoves");
 
   title.textContent = "Gem puzzle";
-  timer.textContent = "Timer";
-  countMoves.textContent = "Count Moves";
 
   header.append(title);
-  header.append(timer);
-  header.append(countMoves);
+  header.append(renderTimer());
+  header.append(renderCountMoves(0));
   header.append(renderMenu());
 
   return header;
@@ -41,15 +30,14 @@ function renderMenu() {
   menu.classList.add("header__menu");
   menu.classList.add("menu");
   menu.append(getListContent());
-  menu.children[0].append(renderStartButton());
-  menu.children[1].append(renderModeSwitcher());
+  menu.children[0].append(renderModeSwitcher());
 
   return menu;
 }
 
 function getListContent() {
   const fragment = new DocumentFragment();
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 3; i++) {
     const li = document.createElement("li");
     li.classList.add("menu__item");
     fragment.append(li);
@@ -65,7 +53,7 @@ function renderModeSwitcher() {
   const dropdownMenu = document.createElement("div");
   dropdownMenu.classList.add("dropdown__menu");
 
-  button.textContent = "mode";
+  button.textContent = "size";
 
   // DropDown Menu
 
@@ -103,40 +91,21 @@ function renderModeSwitcher() {
   return dropdown;
 }
 
-function renderStartButton() {
-  const startButton = document.createElement("button");
-  startButton.classList.add("header__button");
-  startButton.textContent = "start";
-
-  const maxShuffleCount = 500;
-  let timer;
-
-  startButton.addEventListener("click", () => {
-    let shuffleCount = 0;
-    clearInterval(timer);
-
-    if (shuffleCount === 0) {
-      timer = setInterval(() => {
-        randomSwap(MATRIX, SIZE);
-        setPositionMatrix(MATRIX, NODEITEMS);
-
-        shuffleCount += 1;
-
-        if (shuffleCount >= maxShuffleCount) {
-          clearInterval(timer);
-        }
-      }, 30);
-    }
-  });
-  return startButton;
+function renderTimer() {
+  const timer = document.createElement("div");
+  timer.classList.add("header__timer");
+  timer.classList.add("timerCountdown");
+  timer.innerHTML = `time: 00:00`;
+  return timer;
 }
 
-export function changeMatrix(matrix) {
-  MATRIX = matrix;
+export function renderCountMoves(moves) {
+  const countMoves = document.createElement("div");
+  countMoves.classList.add("header__countMoves");
+  countMoves.textContent = `moves: ${moves}`;
+  return countMoves;
 }
-export function changeNodeItems(nodeItems) {
-  NODEITEMS = nodeItems;
-}
-export function changeSize(size) {
-  SIZE = size;
+
+export function changeStart() {
+  ISSTART = !ISSTART;
 }
