@@ -1,7 +1,7 @@
-import renderBoard from "./board"
+import renderBoard from "./board";
 
 function renderBoard3x3() {
-  return renderBoard(3, 'smallBoard')
+  return renderBoard(3, "smallBoard");
 }
 
-export default renderBoard3x3
+export default renderBoard3x3;
