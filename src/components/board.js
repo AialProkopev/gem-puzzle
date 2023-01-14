@@ -5,8 +5,9 @@ import getMatrix from "../helpers/getMatrix";
 import setPositionMatrix from "../helpers/setPositionMatrix";
 import isWon from "../helpers/isWon";
 import randomSwap from "../helpers/randomSwap";
-import { changeStart, renderCountMoves } from "./header";
+import { changeStart } from "./header";
 import { startTimer, stopTimer } from "../helpers/startTimer";
+import { renderWinMessage } from "./winMessage";
 
 const SHUFFLEINTERVAL = 30;
 const MULTSHUFFLECOUNT = 1;
@@ -71,7 +72,8 @@ function renderBoard(size, className) {
     if (isWon(matrix, size)) {
       setTimeout(() => {
         stopTimer();
-        alert(`You won! ${WINTIME}s ${countMoves} moves`);
+        // alert(`You won! ${WINTIME}s ${countMoves} moves`);
+        renderWinMessage(WINTIME, countMoves);
       }, 100);
     }
   });
@@ -121,7 +123,7 @@ function changeSize(size) {
   SIZE = size;
 }
 
-function changeCountMoves(count) {
+export function changeCountMoves(count) {
   const timer = document.querySelector(".header__countMoves");
   timer.textContent = `moves: ${count}`;
 }
