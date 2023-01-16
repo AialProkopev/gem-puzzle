@@ -8,9 +8,10 @@ import randomSwap from "../helpers/randomSwap";
 import { changeStart } from "./header";
 import { startTimer, stopTimer } from "../helpers/startTimer";
 import { renderWinMessage } from "./winMessage";
+import { addResult } from "./saveResult";
 
 const SHUFFLEINTERVAL = 30;
-const MULTSHUFFLECOUNT = 1;
+const MULTSHUFFLECOUNT = 50;
 
 let nodeItems = [];
 let matrix = null;
@@ -72,8 +73,8 @@ function renderBoard(size, className) {
     if (isWon(matrix, size)) {
       setTimeout(() => {
         stopTimer();
-        // alert(`You won! ${WINTIME}s ${countMoves} moves`);
         renderWinMessage(WINTIME, countMoves, size);
+        addResult(size, WINTIME, countMoves);
       }, 100);
     }
   });
