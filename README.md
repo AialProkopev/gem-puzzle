@@ -6,8 +6,8 @@
 [x] - count moves
 [x] - adjust count shuffles
 [x] - add icon to size button
-[] - win message with counters
-[] - save(localStorage)
-[] - results(localStorage)
+[x] - win message with counters
+[x] - results(localStorage)
 [] - sound
 [] - adaptive
+[] - save(localStorage) ??
