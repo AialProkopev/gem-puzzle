@@ -1,7 +1,19 @@
 # gem-puzzle
 
+Simple Game - **15 puzzle**
+
 ---
 
-- [] - sound
-- [] - adaptive
-- [] - save ??
+### tech:
+
+- **Vanilla JavaScript**
+- **Webpack**
+- **Sass**
+
+---
+
+### todo:
+
+- sound
+- adaptive
+- save ??
