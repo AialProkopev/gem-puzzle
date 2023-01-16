@@ -1,10 +1,10 @@
 # gem-puzzle
 
-Simple Game - 15 puzzle
+Simple Game - **15 puzzle**
 
-- Vanilla JavaScript
-- Webpack
-- Sass
+- **Vanilla JavaScript**
+- **Webpack**
+- **Sass**
 
 ---
 
