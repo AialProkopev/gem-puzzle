@@ -11,7 +11,7 @@ import { renderWinMessage } from "./winMessage";
 import { addResult } from "./saveResult";
 
 const SHUFFLEINTERVAL = 30;
-const MULTSHUFFLECOUNT = 1;
+const MULTSHUFFLECOUNT = 50;
 
 let nodeItems = [];
 let matrix = null;

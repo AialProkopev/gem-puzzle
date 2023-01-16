@@ -6,7 +6,6 @@ import renderBoard7x7 from "./7x7";
 import renderBoard8x8 from "./8x8";
 import { clearTimer } from "../helpers/startTimer";
 import { changeCountMoves } from "./board";
-import { openResults, saveResult } from "./saveResult";
 import { clickHandlerResults } from "./results";
 
 let ISSTART = false;
@@ -35,8 +34,8 @@ function renderMenu() {
   menu.classList.add("menu");
   menu.append(getListContent());
   menu.children[0].append(renderModeSwitcher());
-  menu.children[1].append(renderSoundSwitcher());
-  menu.children[2].append(renderResults());
+  // menu.children[1].append(renderSoundSwitcher());
+  menu.children[1].append(renderResults());
   // menu.children[3].append(renderSaveButton());
 
   return menu;
@@ -44,7 +43,7 @@ function renderMenu() {
 
 function getListContent() {
   const fragment = new DocumentFragment();
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     const li = document.createElement("li");
     li.classList.add("menu__item");
     fragment.append(li);

@@ -1,6 +1,8 @@
+import { stopTimer } from "../helpers/startTimer";
 import { openResults } from "./saveResult";
 
 export function clickHandlerResults() {
+  stopTimer();
   const main = document.querySelector(".main");
   main.innerHTML = "";
   main.append(createMessageWindow());
