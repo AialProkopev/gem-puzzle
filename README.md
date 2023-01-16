@@ -2,7 +2,7 @@
 
 Simple Game - **15 puzzle**
 
-## [link](https://gem-puzzle-psi.vercel.app/)
+[**_link_**](https://gem-puzzle-psi.vercel.app/)
 
 ### tech:
 
