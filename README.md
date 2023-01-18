@@ -1,4 +1,4 @@
-# gem-puzzle
+# [wip] gem-puzzle
 
 Simple Game - **15 puzzle**
 

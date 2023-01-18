@@ -25,7 +25,7 @@ function createMessageWindow() {
   wrapper.append(createDiv(5));
   wrapper.append(createDiv(6));
   wrapper.append(createDiv(7));
-  wrapper.append(createDiv(7));
+  wrapper.append(createDiv(8));
 
   window.append(wrapper);
 
